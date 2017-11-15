@@ -215,7 +215,7 @@ function keygen(file) {
         return
       }
       resolve(
-        urljoin(oss.dir, `${md5}.${file.type.split('/').pop()}`)
+        urljoin(oss.dir, `${md5}.${file.name.split('.').pop()}`)
       )
     })
   })
