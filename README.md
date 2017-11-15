@@ -372,6 +372,6 @@ export default {
 我们来总结一下，三步走：
 1. 引入 `@/mixins/uploader`  
 2. 把 mixin 中的对应的参数以及方法传给 ElUpload，顺便实现自己的模板与样式  
-3. 实现 `beforeUpload` 方法（内部须调用 `addFile`）
+3. 实现 `beforeUpload` 方法（内部须调用 `addFile` 把文件添加到上传队列中）
 
 本人经过多次尝试才总结出当前这种较为通用的 mixin 方式，希望可以抛砖引玉，得到您改进的建议与意见
