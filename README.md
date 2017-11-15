@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     /**
-     * 【该方法须自行实现】新增上传任务，用于 ElUpload 组件的 before-upload 钩子函数，举例如下：
+     * 【注意：该方法须自行实现】新增上传任务，用于 ElUpload 组件的 before-upload 钩子函数，举例如下：
      * @param  {File}
      * @return {Boolean/Promise} - 官方文档写道：若返回 false 或者 Promise 则停止上传
       beforeUpload (file) {
@@ -141,7 +141,6 @@ export default {
       })
     },
     nextFile (isAutorun) {
-      // 【小提示】
       // 当 isUploading false => true 时（auto run）：
       // 1. 若之前没有上传过的，则 this.action 和 this.key 均为 ''，故 join 出来是 '/'
       // 2. 若之前有上传过的，则结果为上一次的 uploadPath
