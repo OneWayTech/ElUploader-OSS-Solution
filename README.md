@@ -119,7 +119,7 @@ export default {
       // 若直接就粗暴地调用 syncUploadFiles 则会触发 ElUpload $data.uploadFiles 的更新
       // 导致 handleProgress 中的 var file = this.getFile(rawFile) 为 null
       // 故随后 file.status = 'uploading' 就会立即报错
-      // （详见源码 https://github.com/ElemeFE/element/blob/master/packages/upload/src/index.vue#L141-L146）
+      // （详见源码 https://github.com/ElemeFE/element/blob/1.x/packages/upload/src/index.vue#L141-L146）
       this.isUploading
         ? setTimeout(() => this.onRemove, 1000)
         : this.syncUploadFiles()
