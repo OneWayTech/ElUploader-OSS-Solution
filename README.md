@@ -26,7 +26,7 @@ import debounce from 'lodash/debounce'
 import browserMD5File from 'browser-md5-file'
 const isStr = s => typeof s === 'string'
 
-// 组件共享状态：OSS 上传信息（这就是我司后端返回的“签名”）
+// 组件共享状态：OSS 上传签名（这只是我司后端返回的原始形式，真正 POST 到 OSS 的是 computed:access）
 const oss = {
   accessid: '', // 16 位字符串
   policy: '', // Base64 编码字符串
