@@ -165,18 +165,16 @@ export default {
         ensureAccessValid().then(() => {
           nextTask = taskQueue.shift()
           return keygen(nextTask.file)
-        })
-        .then(key => {
+        }).then(key => {
           this.key = key // 更新 key 以更新 computed:access
           this.$nextTick(() => {
             nextTask.start() // 相当于 resolve 掉 before-upload 钩子中返回的 promise
           })
-        })
-        .catch(e => console.warn(e))
+        }).catch(e => console.warn(e))
       } else {
         this.isUploading = false
       }
-
+      
       return uploadPath
     }
   }
