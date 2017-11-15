@@ -142,8 +142,8 @@ export default {
     },
     nextFile (isAutorun) {
       // 【小提示】
-      // 当 isUploading false => true 时（auto run）
-      // 1. 若之前没有上传过的，则 this.action 和 this.key 均为 ''，故 join 出来是 '/'
+      // 当 isUploading false => true 时（auto run）：
+      // 1. 若之前没有上传过的，则 this.action 和 this.key 均为 ''，故 join 出来是 '/'
       // 2. 若之前有上传过的，则结果为上一次的 uploadPath
       // 鉴于两者都没有意义，故由 auto run 触发的都无需执行 urljoin
       let uploadPath
