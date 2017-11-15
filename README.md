@@ -1,11 +1,10 @@
 # § ElementUI - Upload 结合 OSS 的封装
 
-[ElUpload](http://element-cn.eleme.io/1.4/#/zh-CN/component/upload) 组件对于直传后端服务器是很好用的  
-但对于直传阿里云 OSS 或者其他 CDN 服务则显得没那么便利了（因为涉及到签名校验以及有效期等）  
+[ElUpload](http://element-cn.eleme.io/1.4/#/zh-CN/component/upload) 对于直传阿里云 OSS 或其他 CDN 服务的场景显得相当不便利（因为涉及到签名校验以及有效期等）  
 此时我们需要自行封装出符合业务需求的通用化组件
 
 于我而言，我本身比较排斥组件嵌套较深的情况，且很多时候还要考虑到父子组件通信的问题  
-因此我很多的所谓“通用化组件”实际上是以 mixin 的形式来实现的
+因此我有很多所谓的“通用化组件”实际上是以 mixin 的形式来实现的
 
 首先讲讲需要注意的问题：
 * 需要从我们自己的后端获取签名（详见 OSS 文档 - [服务端签名后直传](https://help.aliyun.com/document_detail/31926.html)）
@@ -369,5 +368,10 @@ export default {
 ```
 
 ***
+
+我们来总结一下，三步走：
+1. 引入 `@/mixins/uploader`  
+2. 把 mixin 中的对应的参数以及方法传给 ElUpload，顺便实现自己的模板与样式  
+3. 实现 `beforeUpload` 方法（内部须调用 `addFile`）
 
 本人经过多次尝试才总结出当前这种较为通用的 mixin 方式，希望可以抛砖引玉，得到您改进的建议与意见
