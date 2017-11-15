@@ -10,10 +10,11 @@
 首先讲讲需要注意的问题：
 * 需要从我们自己的后端获取签名（详见 OSS 文档 - [服务端签名后直传](https://help.aliyun.com/document_detail/31926.html)）
 * 需要考虑签名的有效期（我司一般是设置 2 ~ 3 min）
+* 在签名有效期内，不能重复请求后端获取签名（签名的跨组件共享，原理可参考[这里](https://github.com/kenberkeley/vue-state-management-alternative)）
 * 是逐个上传，而非并发上传（否则网速慢的时候得卡死）
 * 需要支持各类文件的不定项上传
-* 需要支持回显操作
-* 需要支持样式各异的组件形式
+* 需要支持回显操作（编辑状态下肯定是必须的）
+* 需要支持样式各异的组件形式（单单这个需求就已经没办法实现一个所谓的通用化组件了，因为模板与样式各异）
 * ElUpload 截止到 1.4.7 时还是有很多坑，需要一一避免（e.g. 令人抓狂的 `fileList`）
 
 下面是对应的 `@/mixins/uploader.js`
@@ -25,7 +26,7 @@ import debounce from 'lodash/debounce'
 import browserMD5File from 'browser-md5-file'
 const isStr = s => typeof s === 'string'
 
-// 组件共享状态：OSS 上传信息
+// 组件共享状态：OSS 上传信息（这就是我司后端返回的“签名”）
 const oss = {
   accessid: '', // 16 位字符串
   policy: '', // Base64 编码字符串
@@ -366,3 +367,7 @@ export default {
 ```html
 <app-uploader :files.sync="pkgUrl" />
 ```
+
+***
+
+本人尝试过多次才总结出当前这种较为通用的 mixin 方式，希望可以抛砖引玉，得到您改进的建议与意见
