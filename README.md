@@ -1,4 +1,4 @@
-# § ElementUI - Upload 结合 OSS 的封装
+# § ElementUI 1.x - Upload 结合 OSS 的封装
 
 [ElUpload](http://element-cn.eleme.io/1.4/#/zh-CN/component/upload) 对于直传阿里云 OSS 或其他 CDN 服务的场景显得相当不便利（因为涉及到签名校验以及有效期等）  
 此时我们需要自行封装出符合业务需求的通用化组件
